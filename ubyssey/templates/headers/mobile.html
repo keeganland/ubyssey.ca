@@ -4,12 +4,12 @@
     <a class="logo" href="{% url 'home' %}"><img src="{% static 'images/ubyssey-logo-small.svg' %}" type="text/css"/></a>
     <a class="search right" href="{% url 'search' %}"><i class="fa fa-search"></i></a>
 </header>
-<div id='header-mobile-spacer'></div>
+<div id='header-mobile-spacer{% if class %}--{{ class }}{% endif %}'></div>
 <nav class="mobile">
     <div class="left">
         <h3>Sections</h3>
         <ul class="sections">
-            <li><a href="{% url 'page' 'themainmaller' %}">The Main Maller</a></li>
+            <!-- <li><a href="{% url 'page' 'themainmaller' %}">The Main Maller</a></li> -->
             <li><a href="{% url 'page' 'news' %}">News</a></li>
             <li><a href="{% url 'page' 'culture' %}">Culture</a></li>
             <li><a href="{% url 'page' 'features' %}">Features</a></li>
@@ -37,3 +37,5 @@
         </ul>
     </div>
 </nav>
+
+

@@ -15,7 +15,8 @@ const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 
 const fs = require('fs');
-const version = JSON.parse(fs.readFileSync('./package.json')).version;
+const data = fs.readFileSync('./../../version.txt', 'utf8');
+const version = data.toString();
 
 function cleanJsTask() {
   return src('./dist/js/', {read: false, allowEmpty: true})

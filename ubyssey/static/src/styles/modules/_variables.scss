@@ -1,7 +1,7 @@
 // Breakpoints
 $bp-mobile-size             : 401;
 $bp-phablet-size            : 760;
-$bp-tablet-size             : 960;
+$bp-tablet-size             : 1080;
 $bp-desktop-size            : 1200;
 $bp-desktophd-size          : 1400;
 
@@ -17,7 +17,7 @@ $bp-larger-than-desktophd   : "min-width: #{$bp-desktophd-size}px" !default;
 $bp-smaller-than-desktophd  : "max-width: #{$bp-desktophd-size - 1}px" !default;
 
 $bp-phablet               : "550px";
-$bp-tablet                : "960px";
+$bp-tablet                : "1080px";
 
 $bp-960px                 : "min-width: 960px" !default;
 

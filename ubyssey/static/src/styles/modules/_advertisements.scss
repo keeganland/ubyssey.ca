@@ -1,7 +1,7 @@
 $adslots: (
   billboard: (970px, 250px),
-  large-leaderboard: (970px, 90px),
-  leaderboard: (728px, 90px),
+  large-leaderboard: (760px, 90px),
+  leaderboard: (759px, 90px),
   banner: (468px, 60px),
   large-skyscraper: (300px, 600px),
   box: (300px, 250px),
@@ -19,7 +19,7 @@ $adslots: (
   $width: nth(map-get($adslots, leaderboard), 1);
   $height: nth(map-get($adslots, leaderboard), 2);
 
-  display: none;
+  display: flex;
 
   .adslot {
     margin-left: auto;
@@ -31,18 +31,18 @@ $adslots: (
 
   &.o-advertisement--homepage {
     .adslot {
-      padding-top: 1.5rem;
+      padding-top: 1rem;
     }
 
     &.o-advertisement--leaderboard {
-      padding-bottom: 1.5rem;
+      padding-bottom: 0rem;
     }
   }
 
-  @media(min-width: $width + 40) {
-    display: flex;
+  @media(max-width: $width) {
+    display: none;
     &.o-advertisement--homepage {
-      display: flex;
+      display: none;
     }
   }
 
@@ -107,6 +107,7 @@ main.article .o-advertisement--leaderboard {
   $desktop-width: nth(map-get($adslots, leaderboard), 1);
 
   .adslot {
+    display:flex;
     width: $width;
     height: $height;
     padding-top: 1rem;
@@ -114,7 +115,7 @@ main.article .o-advertisement--leaderboard {
     margin-right: auto;
   }
 
-  @media(min-width: $desktop-width + 40) {
+  @media(min-width: $desktop-width) {
     display: none;
   }
 }

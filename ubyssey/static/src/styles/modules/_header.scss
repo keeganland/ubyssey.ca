@@ -308,6 +308,15 @@ header.topbar {
   }
 }
 
+#header-mobile-spacer--homepage {
+  height: 54px;
+  min-height: 54px;
+  @media ($bp-larger-than-tablet) {
+    height: 0px;
+    min-height: 0px;
+  }
+}
+
 header.mobile {
   height: 54px;
   min-height: 54px;

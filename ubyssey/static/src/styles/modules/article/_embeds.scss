@@ -410,14 +410,29 @@
 
 .pull-quote {
   p.quote {
-    font-family: $font-body;
-    font-size: 24px;
+    // font-family: $font-body;
+    // font-size: 24px;
+    // line-height: 1.5em;
+    // font-style: italic;
+    // margin: 0;
+
+    font-family: "Times New Roman";
+    font-size: font-size(26);
     line-height: 1.5em;
-    font-style: italic;
-    margin: 0;
+    font-weight: bold;
+    text-align: center;
+
+    
   }
   p.source {
     margin-top: 10px;
     margin-bottom: 0;
+
+    text-transform: uppercase;
+    text-align: right;
+    color: #000000;
+    font-weight: 100;
+    font-style: italic;
+    font-size: 0.77em;
   }
 }

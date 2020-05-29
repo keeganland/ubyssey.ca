@@ -203,6 +203,13 @@ class UpcomingEventsHorizontalWidget(Widget):
         return result
 
 @register.widget
+class AdvertisementWidget(Widget):
+    id = 'advertisement'
+    name = 'Advertisement'
+    template = 'widgets/advertisement.html'
+    zones = (FrontPage, HomePageSidebarBottom,)
+
+@register.widget
 class TopStoryDefault(Widget):
     id = 'top-story-default'
     name = 'Top Story Default'
@@ -234,7 +241,6 @@ class TwitterFrontPage(Widget):
     template = 'widgets/frontpage/twitter-front-page.html'
     zones = (HomePageSidebarBottom,)
 
-
 @register.widget
 class FrontPageDefault(Widget):
     id = 'frontpage-default'
@@ -246,8 +252,8 @@ class FrontPageDefault(Widget):
 
     # top_story is unused as of now
     top_story = WidgetField('Top Story', [TopStoryDefault, TopStoryLive], required=True)
-    sidebar = WidgetField('First Widget on Sidebar', [UpcomingEventsWidget, TwitterFrontPage, FeaturedSubsectionWidget, FeaturedVideosWidget], required=True)
-    sidebar2 = WidgetField('Second Widget on Sidebar', [UpcomingEventsWidget, TwitterFrontPage, FeaturedSubsectionWidget, FeaturedVideosWidget], required=False)
+    sidebar = WidgetField('First Widget on Sidebar', [UpcomingEventsWidget, TwitterFrontPage, FeaturedSubsectionWidget, FeaturedVideosWidget, AdvertisementWidget], required=True)
+    sidebar2 = WidgetField('Second Widget on Sidebar', [UpcomingEventsWidget, TwitterFrontPage, FeaturedSubsectionWidget, FeaturedVideosWidget, AdvertisementWidget], required=False)
 
 
 def in_date_range(start, end):

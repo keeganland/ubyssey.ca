@@ -1,6 +1,6 @@
 $adslots: (
-  leaderboard: (728px, 90px),
-  large-leaderboard: (970px, 90px),
+  leaderboard: (759px, 90px),
+  large-leaderboard: (760px, 90px),
   mobile-leaderboard: (300px, 50px),
   banner: (468px, 60px),
   box: (300px, 250px),
@@ -28,7 +28,7 @@ $adslots: (
     }
   }
 
-  @media(min-width: $width + 40) {
+  @media(min-width: $width) {
     display: block;
     &.o-replacement--homepage {
       display: none;
@@ -103,7 +103,7 @@ main.article .o-replacement--leaderboard {
     margin-right: auto;
   }
 
-  @media(min-width: $desktop-width + 40) {
+  @media(min-width: $desktop-width) {
     display: none;
   }
 }

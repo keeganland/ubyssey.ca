@@ -2,11 +2,11 @@
 {% load static %}
 {% load humanize %}
 {% load dispatch_tags %}
-{% block content %}
+{% block header %}
 {% include 'headers/main.html' %}
-{% if is_mobile %}
-    {% include 'headers/mobile.html' %}
-{% endif %}
+{% include 'headers/mobile.html' with class='homepage' %}
+{% endblock %}
+{% block content %}
 {% include 'objects/advertisement.html' with size='leaderboard' name='Leaderboard' id=1 class='homepage' %}
 {% include 'objects/advertisement.html' with size='mobile-leaderboard' name='Mobile_Leaderboard' id=5 class='homepage' %}
 <main class="u-container u-container--large homepage">
@@ -27,12 +27,9 @@
             {% include 'homepage/blocks/section_videos.html' with section="videos" video=video %}
             <!-- {% include 'homepage/blocks/section_podcast.html' with section="podcast" podcast=podcast %}-->
             {% include 'homepage/blocks/section_2.html' with section="magazine" articles=sections.magazine %}
-            {% include 'homepage/blocks/section_2.html' with section="themainmaller" articles=sections.themainmaller %}
+            <!-- {% include 'homepage/blocks/section_2.html' with section="themainmaller" articles=sections.themainmaller %} -->
         </div>
         <div class="sidebar-home">
-            <div class="sidebar-block sidebar-block--advertisement">
-              {% include 'objects/advertisement.html' with size='box' name='Box_A' id=3 %}
-            </div>
             <div class="popular sidebar-block">
               <h2 class="block-title">Most popular this week</h2>
               <ol class="article-list">
@@ -40,7 +37,10 @@
                   <li><h4 class="headline"><a href="{{ article.get_absolute_url }}?ref=popular&dur=week">{{ article.headline|safe }}</a></h4></li>
                   {% endfor %}
               </ol>
-          </div>
+            </div>
+            <div class="sidebar-block sidebar-block--advertisement">
+              {% include 'objects/advertisement.html' with size='box' name='Box_A' id=4 %}
+            </div>
             <div class=" sidebar-block">
                 <h2 class="block-title">Check Out Our Digital Print Issue</h2>
                     <h5 class="headline"><a href="https://issuu.com/ubyssey/docs/april_7_final__2_">April 7, 2020 </a> <img src="https://image.isu.pub/200407211645-4af57f5cea1cd0dba58ac4fd63bee202/jpg/page_1_thumb_large.jpg"></h5>
@@ -48,7 +48,7 @@
                     <h5 class="headline"><a href="https://issuu.com/ubyssey/docs/sci-fi_competition_2020__1_">Sci-fi Competition Special Edition </a></h5>
             </div>
             <div class="sidebar-block sidebar-block--advertisement">
-              {% include 'objects/advertisement.html' with size='box' name='Box_B' id=4 %}
+              {% include 'objects/advertisement.html' with size='box' name='Box_B' id=6 %}
             </div>
             <div class="article-list blog sidebar-block">
                 <h2 class="block-title">From the blog</h2>
