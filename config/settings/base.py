@@ -218,17 +218,26 @@ REST_FRAMEWORK = {
 
 STATICFILES_DIRS = []
 
+# Set the middleware
 MIDDLEWARE = [
-	'django.middleware.security.SecurityMiddleware',
+    'django.middleware.security.SecurityMiddleware',
 	'whitenoise.middleware.WhiteNoiseMiddleware',
-	'debug_toolbar.middleware.DebugToolbarMiddleware',
-	'django.contrib.sessions.middleware.SessionMiddleware',
-	'django.middleware.common.CommonMiddleware',
-	'django.middleware.csrf.CsrfViewMiddleware',
-	'django.contrib.auth.middleware.AuthenticationMiddleware',
-	'django.contrib.messages.middleware.MessageMiddleware',
-	'django.middleware.clickjacking.XFrameOptionsMiddleware',
-	'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+    'django.middleware.gzip.GZipMiddleware',
+]
+
+if DEBUG:
+    MIDDLEWARE += [
+        'debug_toolbar.middleware.DebugToolbarMiddleware',
+    ]
+
+MIDDLEWARE += [
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
 GS_LOCATION = None
 GS_STORAGE_BUCKET_NAME = None
@@ -244,3 +253,8 @@ WAGTAIL_SITE_NAME = 'The Ubyssey'
 WAGTAIL_USER_EDIT_FORM = 'dispatchwagtail.forms.DispatchUserEditForm'
 WAGTAIL_USER_CREATION_FORM = 'dispatchwagtail.forms.DispatchUserCreationForm'
 WAGTAIL_USER_CUSTOM_FIELDS = ['person', 'is_active']
+
+# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+WHITENOISE_KEEP_ONLY_HASHED_FILES = True

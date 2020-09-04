@@ -96,7 +96,7 @@ class ArticleMixin(object):
 
         return ad_placements
 
-    def get_frontpage(self, sections=[], exclude=[], limit=7, is_published=True, max_days=14):
+    def get_frontpage_qs(self, sections=[], exclude=[], limit=7, is_published=True, max_days=14):
 
         reading_times = {
             'morning_start': '9:00:00',
@@ -130,7 +130,7 @@ class ArticleMixin(object):
             '-published_at'
         )[:limit]
         
-        return list(articles)
+        return articles
 
     def get_frontpage_sections(self, exclude=None):
 
@@ -156,7 +156,7 @@ class ArticleMixin(object):
         name = None
         if ref is not None:
             if ref == 'frontpage':
-                articles = self.get_frontpage(exclude=[article.parent_id])
+                articles = list(self.get_frontpage_qs(exclude=[article.parent_id]))
                 name = 'Top Stories'
             elif ref == 'popular':
                 articles = self.get_popular(dur=dur).exclude(pk=article.id)[:5]
@@ -298,7 +298,7 @@ class DispatchPublishableViewMixin(object):
         """
         Adds to the view counter before rendering the page. We do this as late as possible to try to prevent adding to the view counter in the event of errors
         """
-        self.get_queryset().update(views=F('views')+1) # We call this at the last possible second once everything has been done correctly so that we only count successful attempts to read the article
+        # self.get_queryset().update(views=F('views')+1) # We call this at the last possible second once everything has been done correctly so that we only count successful attempts to read the article
         return super().render_to_response(context, **response_kwargs)
 
     def get_article_meta(self, default_image=None):
